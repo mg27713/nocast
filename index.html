@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NoCast</title>
+    </head>
+    <script type="text/javascript">
+        addEventListener("load", function() {
+            function stringify(color) {
+                var out = color.toString(16);
+                if (out.length < 2)
+                    out = "0" + out;
+                
+                return out;
+            }
+            
+            var warning = document.getElementById("warning");
+            
+            setInterval(function() {
+                var color = document.body.style.backgroundColor === "rgb(0, 0, 0)"
+                    ? Math.floor(Math.random()*256)
+                    : 0;
+                
+                //alert(document.body.style.backgroundColor);
+                document.body.style.backgroundColor = "#0000" + stringify(color);
+                warning.style.color = "#0000" + stringify(255-color);
+            }, 100);
+        });
+    </script>
+    <body>
+        <h1 id="warning">Stop spying on me!</h1>
+    </body>
+</html>
